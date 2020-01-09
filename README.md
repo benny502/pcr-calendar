@@ -12,6 +12,9 @@
 由于Google Calendar使用OAuth协议。所以没有办法做成全自动,需要每次手动更新的时候自行授权。
 
 使用方法：
+`https://developers.google.cn/calendar/quickstart/php`
+
+先根据示例开启google calendar api，下载credentials.json，将credentials.json放入根目录
 
 自行创建一个谷歌日历，用日历ID替换代码中的`$calendarId`
  
