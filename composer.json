@@ -1,0 +1,12 @@
+{
+	"repositories": {
+	    "packagist": {
+	        "type": "composer",
+	        "url": "https://packagist.phpcomposer.com"
+	    }
+	},
+	"require": {
+		"guzzlehttp/guzzle": "^6.5",
+		"google/apiclient": "^2.4"
+	}
+}
