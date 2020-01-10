@@ -74,22 +74,6 @@ $optParams = array(
 $results = $service->events->listEvents($calendarId, $optParams);
 $events = $results->getItems();
 
-
-
-// if (empty($events)) {
-//     print "No upcoming events found.\n";
-// } else {
-//     print "Update events:\n";
-//     foreach ($events as $event) {
-//         $start = $event->start->dateTime;
-//         $end = $event->end->dateTime;
-//         if (empty($start)) {
-//             $start = $event->start->date;
-//         }
-//         printf("%s (%s) (%s)\n", $event->getSummary(), $start, $end);
-//     }
-// }
-
 $client = new GuzzleHttp\Client();
 $res = $client->request('GET', 'https://pcredivewiki.tw/static/data/event.json');
 $statusCode = $res->getStatusCode();
@@ -97,6 +81,7 @@ $statusCode = $res->getStatusCode();
 if($statusCode != 200) {
     throw new Exception('Request pcredivewiki calendar failed.\n');
 }
+
 $rawString = $res->getBody();
 $rawJson = json_decode($rawString, true);
 
@@ -121,7 +106,7 @@ foreach($rawJson as $item) {
             ],
         ];
         $service->events->insert($calendarId, new Google_Service_Calendar_Event($event));
-        echo sprintf("%s (%s) (%s)\n", $item['campaign_name'], date("c", $start_time), date("c", $end_time));
+        echo sprintf("%s (%s) (%s)\n", $item['campaign_name'], $item['start_time'], $item['end_time']);
     }
 }
 
